@@ -9,22 +9,26 @@ class CardController{
         this._btnCopiar = document.querySelector(".btn-copiar");
         this._btnArquivo = document.querySelector(".btn-arquivo");
         this._btnDeletar = document.querySelector(".btn-deletar");
+        this._tableCards = document.querySelector(".tabela-view");
         
 
         this._listCards = new ListCards();
         this._cardTabelaView = new CardTabelaView(document.querySelector(".tabela-view"));
-        this._cardModalEditView = new CardModalEditView(document.querySelector(".modal-content"));      
+        this._cardModalEditView = new CardModalEditView(document.querySelector(".modal-content"));  
+    
     }
 
-    _mostraBotoes(){
+    _mostraItens(){
         this._btnCopiar.classList.remove("invisivel");
         this._btnArquivo.classList.remove("invisivel");
         this._btnDeletar.classList.remove("invisivel");
+        this._tableCards.classList.remove("invisivel");
     }
-    _escondeBotoes(){
+    _escondeItens(){
         this._btnCopiar.classList.add("invisivel");
         this._btnArquivo.classList.add("invisivel");
         this._btnDeletar.classList.add("invisivel");
+        this._tableCards.classList.add("invisivel");
     }
     adicionaCardTabela(){
         this._listCards.adiciona(this._criaCard((this._inputNumero.textContent), 
@@ -35,7 +39,7 @@ class CardController{
 
         this._cardTabelaView.update(this._listCards);
         this._limpaCampos();
-        this._mostraBotoes();
+        this._mostraItens();
     }
 
     _criaCard(numero, frase, definicao, gramatica, descricaoFonetica){
@@ -84,8 +88,9 @@ class CardController{
     removeCardTabela(){
         this._listCards.removeUltimo();
         if(this._listCards.tamanho<1){
-            this._escondeBotoes();
+            this._escondeItens();
         }
         this._cardTabelaView.update(this._listCards);
+        this._inputNumero.textContent = (this._listCards.tamanho+1);
     }
 }
