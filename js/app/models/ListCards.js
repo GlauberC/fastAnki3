@@ -11,6 +11,9 @@ class ListCards{
     edita(card, posicao){
         this._cards[posicao] = card;
     }
+    removeUltimo(){
+        this._cards.pop();
+    }
     get tamanho(){
         return this._cards.length;
     }

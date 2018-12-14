@@ -19,8 +19,8 @@
 
     <link rel="stylesheet" type="text/css" href="css/section-lista.css">
     <link rel="stylesheet" type="text/css" href="css/section-tabela.css">
-    <link rel="stylesheet" href="css/buttons-color.css">
-    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons-color.css">
+    <link rel="stylesheet" type="text/css" href="css/page.css">
 
 
 </head>
@@ -38,8 +38,8 @@
                             <input type="text" placeholder="Frases para adicionar" class="form-control frase">
                         </div>
                         <div class = "row">
-                            <input type="text" placeholder="Descrição fonética" class="form-control descricao-fonetica col-lg-2">
-                            <select class = "form-control gramatica col-lg-2">
+                            <input type="text" placeholder="Descrição fonética" class="form-control descricao-fonetica col-md-2">
+                            <select class = "form-control gramatica col-md-2">
                                 <option class = "opcao-nula"></option>
                                 <option>Noun</option>
                                 <option>Verb</option>
@@ -50,32 +50,32 @@
                                 <option>PV</option>
                                 <option>MV</option>
                             </select>
-                            <input type="text" placeholder="Definição ou tradução" class="form-control definicao col-lg-8">
+                            <input type="text" placeholder="Definição ou tradução" class="form-control definicao col-md-8">
                         </div>
                     </div> 
                 </div>
-            <button onClick = "cardController.recuperaDadosCardAdicionado()" class = "btn btn-button btn-tabela button-custom-color button-color-three float-right btn-copiar">Copiar ultimas informações</button>
+            <button onClick = "cardController.recuperaDadosCardAdicionado()" class = "btn btn-button btn-tabela button-custom-color button-color-three float-right btn-copiar invisivel">Copiar ultimas informações</button>
             <button onClick = "cardController.adicionaCardTabela()" class = "btn btn-button btn-block btn-tabela button-custom-color button-color-three">Adicionar na Tabela</button>
-            <button class = "btn btn-button btn-block btn-arquivo button-custom-color button-color-one">Salvar Tabela como csv</button>
+            <button class = "btn btn-button btn-block btn-arquivo button-custom-color button-color-five invisivel">Salvar Tabela como csv</button>
         </section>
         <section class="tabela">
             <div class="tabela-view"></div>
+            <button onClick = "cardController.removeCardTabela()" class = "btn btn-button btn-block btn-deletar button-custom-color button-color-one invisivel">Deletar último dado</button>
         </section>
         <input class="temp invisivel">
-        
-        
-
-        <div class="modal" id="modal-edit">
-            <div class="modal-dialog">
-                <div class="modal-content"> 
-                            
-                </div>
-            </div>
-        </div>
-        
+       
+      
         
 
     </main>
+
+    <div class="modal" id="modal-edit">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content"> 
+                        
+            </div>
+        </div>
+    </div>
     
     <!-- controller -->
     <script src="js/app/controllers/CardController.js"></script>
