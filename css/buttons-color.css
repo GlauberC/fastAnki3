@@ -1,0 +1,30 @@
+.button-custom-color{
+    color: white;
+}
+
+.button-color-one{
+    
+    background-color: #412227;
+
+}
+.button-color-two{
+    background-color: #79553D;
+
+}
+.button-color-three{
+    background-color: #49678D;
+
+}
+.button-color-four{
+    background-color: #606E8C;
+
+}
+
+.button-color-five{
+    background-color: #1D334A;
+
+}
+
+.button-custom-color:hover{
+    opacity: 0.75;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Fast to Anki 3.0</title>
+    
+
+    <!-- Importações Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/section-lista.css">
+    <link rel="stylesheet" type="text/css" href="css/section-tabela.css">
+    <link rel="stylesheet" href="css/buttons-color.css">
+    <link rel="stylesheet" href="css/page.css">
+
+
+</head>
+<body>
+    <main class = "container">
+        <header class = "jumbotron text-center title">
+            <h1>Fast anki</h1> 
+            <p>Adicionar frases no anki ficou mais fácil</p>
+        </header>
+        <section class="section-lista">
+            <div class = "row">
+                    <span class = "col-md-1 numero">1</span>
+                    <div class = "col-md-10">
+                        <div class = "row">
+                            <input type="text" placeholder="Frases para adicionar" class="form-control frase">
+                        </div>
+                        <div class = "row">
+                            <input type="text" placeholder="Descrição fonética" class="form-control descricao-fonetica col-lg-2">
+                            <select class = "form-control gramatica col-lg-2">
+                                <option class = "opcao-nula"></option>
+                                <option>Noun</option>
+                                <option>Verb</option>
+                                <option>Adj</option>
+                                <option>Adv</option>
+                                <option>Conj</option>
+                                <option>Prep</option>
+                                <option>PV</option>
+                                <option>MV</option>
+                            </select>
+                            <input type="text" placeholder="Definição ou tradução" class="form-control definicao col-lg-8">
+                        </div>
+                    </div> 
+                </div>
+            <button onClick = "cardController.recuperaDadosCardAdicionado()" class = "btn btn-button btn-tabela button-custom-color button-color-three float-right btn-copiar">Copiar ultimas informações</button>
+            <button onClick = "cardController.adicionaCardTabela()" class = "btn btn-button btn-block btn-tabela button-custom-color button-color-three">Adicionar na Tabela</button>
+            <button class = "btn btn-button btn-block btn-arquivo button-custom-color button-color-one">Salvar Tabela como csv</button>
+        </section>
+        <section class="tabela">
+            <div class="tabela-view"></div>
+        </section>
+        <input class="temp invisivel">
+        
+        
+
+        <div class="modal" id="modal-edit">
+            <div class="modal-dialog">
+                <div class="modal-content"> 
+                            
+                </div>
+            </div>
+        </div>
+        
+        
+
+    </main>
+    
+    <!-- controller -->
+    <script src="js/app/controllers/CardController.js"></script>
+
+
+    <!-- helper -->
+
+    <!-- model -->
+    <script src="js/app/models/Card.js"></script>
+    <script src="js/app/models/ListCards.js"></script>
+
+    <!-- views -->
+    <script src="js/app/views/View.js"></script>
+    <script src="js/app/views/CardTabelaView.js"></script>
+    <script src="js/app/views/CardModalEditView.js"></script>
+
+
+    <script> 
+        let cardController = new CardController;
+        // document.addEventListener("click", (event) => {
+        //     console.log();
+        // })
+    </script>
+
+</body>
