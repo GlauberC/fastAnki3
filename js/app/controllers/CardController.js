@@ -17,9 +17,13 @@ class CardController{
         this._cardModalEditView = new CardModalEditView(document.querySelector(".modal-content"));  
 
         this._mensagemInfo = new Mensagem("info", "Card adicionado com sucesso");
+        this._mensagemInfoArquivo = new Mensagem("info", "Arquivo gerado com sucesso");
         this._mensagemWarning = new Mensagem("warning", "Card editado com sucesso");
         this._mensagemDanger = new Mensagem("danger", "Card removido com sucesso");
+        this._mensagemError = new Mensagem("danger", "Não foi possível adicionar o card, preencha o campo da frase ou definição");
+        
         this._mensagemView = new MensagemView(document.querySelector(".mensagem-view"));
+        this._mensagemModal;
     
     }
 
@@ -36,17 +40,22 @@ class CardController{
         this._tableCards.classList.add("invisivel");
     }
     adicionaCardTabela(){
-        this._listCards.adiciona(this._criaCard((this._inputNumero.textContent), 
-                                                this._inputFrase.value, 
-                                                this._inputDefinicao.value, 
-                                                this._inputGramatica.value, 
-                                                this._inputDescricaoFonetica.value));
+        if(this._inputFrase.value != "" && this._inputDefinicao.value != ""){
+            this._listCards.adiciona(this._criaCard((this._inputNumero.textContent), 
+                                                    this._inputFrase.value, 
+                                                    this._inputDefinicao.value, 
+                                                    this._inputGramatica.value, 
+                                                    this._inputDescricaoFonetica.value));
 
-        this._cardTabelaView.update(this._listCards);
-        this._limpaCampos();
-        this._mostraItens();
+            this._cardTabelaView.update(this._listCards);
+            this._limpaCampos();
+            this._mostraItens();
 
-        this._mensagemView.update(this._mensagemInfo);
+            this._mensagemView.update(this._mensagemInfo);
+        }else{
+            this._mensagemView.update(this._mensagemError);
+        }
+        
     }
 
     _criaCard(numero, frase, definicao, gramatica, descricaoFonetica){
@@ -80,18 +89,23 @@ class CardController{
         
     }
     saveModal(){
+        this._mensagemModal = new MensagemView(document.querySelector(".modal-mensagem"));
         let editNumero = (document.querySelector(".modal-numero").textContent);
         let editFrase = document.querySelector(".modal-frase").value;
         let editDefinicao = document.querySelector(".modal-definicao").value;
         let editGramatica = document.querySelector(".modal-gramatica").value;
         let editDescricaoFonetica = document.querySelector(".modal-descricao-fonetica").value;
+        if(editFrase != "" && editDefinicao != ""){
+            this._listCards.edita(this._criaCard(editNumero, editFrase, editDefinicao, editGramatica, editDescricaoFonetica), (editNumero-1))
 
-        this._listCards.edita(this._criaCard(editNumero, editFrase, editDefinicao, editGramatica, editDescricaoFonetica), (editNumero-1))
 
+            this._cardTabelaView.update(this._listCards);
+            this._mensagemView.update(this._mensagemWarning);
+            $("#modal-edit").modal('toggle');
+        }else{
+            this._mensagemModal.update(this._mensagemError);
+        }
 
-        this._cardTabelaView.update(this._listCards);
-        this._mensagemView.update(this._mensagemWarning);
-        $("#modal-edit").modal('toggle');
     }
     removeCardTabela(){
         this._listCards.removeUltimo();
@@ -114,5 +128,25 @@ class CardController{
         }else if(this._inputDefinicao.value == ""){
             this._inputDefinicao.focus();
         }
+    }
+    copiaClick(event){
+        let tdClicado = event.target
+        tdClicado.classList.add("info-mensagem");
+        let inputTemp = document.querySelector(".temp")
+
+        inputTemp.classList.remove("invisivel")
+        inputTemp.value = tdClicado.textContent;
+        inputTemp.select();
+        
+        document.execCommand('copy');
+        inputTemp.classList.add("invisivel")   
+    }
+    salvaArquivo(){
+        let cards = ([... this._listCards.cards]);
+        let csvs = []
+        cards.forEach( n => csvs.push(n._csvReady()));
+        
+        download("anki.csv", csvs.join('\r\n'))
+        this._mensagemView.update(this._mensagemInfoArquivo);
     }
 }

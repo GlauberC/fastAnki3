@@ -2,20 +2,19 @@
     color: white;
     background-color: #49678D;
 }
-.info-mensagem{
-    color: white;
-    background-color: #606E8C;
+.mensagem{
     opacity: 0.6;
+    color: white;
+    margin: 1em;
+}
+.info-mensagem{
+    background-color: #606E8C;
 }
 .warning-mensagem{
-    color: white;
     background-color: #79553D;
-    opacity: 0.6;
 }
 .danger-mensagem{
-    color: white;
     background-color: #412227;
-    opacity: 0.6;
 }
 .btn{
     margin-top: 0.5em;

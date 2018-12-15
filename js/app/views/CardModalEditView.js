@@ -36,6 +36,7 @@ class CardModalEditView extends View{
 
                         <input type="text" value="${model.definicao}" placeholder="Definição ou tradução" class="form-control definicao col-sm-8 modal-definicao">
                     </div>
+                    <div class = "row modal-mensagem"></div>
                 </div> 
             </div>
         </div>

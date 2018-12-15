@@ -36,5 +36,8 @@ class Card{
         }
         return verso;
     }
+    _csvReady(){
+        return `${this._frase.replace(/;/ig, ". ")} ; ${this._versoCard().replace(/;/ig, ". ")}`;
+    }
     
 }

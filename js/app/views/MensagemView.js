@@ -7,11 +7,11 @@ class MensagemView extends View{
         if(model.texto == ""){
             return `<p></p>`;
         }else if(model.status == "info"){
-            return `<p class="alert info-mensagem">${model.texto}</p>`;
+            return `<p class="alert mensagem info-mensagem">${model.texto}</p>`;
         }else if(model.status == "danger"){
-            return `<p class="alert danger-mensagem">${model.texto}</p>`;
+            return `<p class="alert mensagem danger-mensagem">${model.texto}</p>`;
         }else if(model.status == "warning"){
-            return `<p class="alert warning-mensagem">${model.texto}</p>`;
+            return `<p class="alert mensagem warning-mensagem">${model.texto}</p>`;
         }
     }
 }
