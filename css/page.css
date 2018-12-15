@@ -1,7 +1,21 @@
 .title{
     color: white;
     background-color: #49678D;
-    
+}
+.info-mensagem{
+    color: white;
+    background-color: #606E8C;
+    opacity: 0.6;
+}
+.warning-mensagem{
+    color: white;
+    background-color: #79553D;
+    opacity: 0.6;
+}
+.danger-mensagem{
+    color: white;
+    background-color: #412227;
+    opacity: 0.6;
 }
 .btn{
     margin-top: 0.5em;

@@ -15,6 +15,11 @@ class CardController{
         this._listCards = new ListCards();
         this._cardTabelaView = new CardTabelaView(document.querySelector(".tabela-view"));
         this._cardModalEditView = new CardModalEditView(document.querySelector(".modal-content"));  
+
+        this._mensagemInfo = new Mensagem("info", "Card adicionado com sucesso");
+        this._mensagemWarning = new Mensagem("warning", "Card editado com sucesso");
+        this._mensagemDanger = new Mensagem("danger", "Card removido com sucesso");
+        this._mensagemView = new MensagemView(document.querySelector(".mensagem-view"));
     
     }
 
@@ -40,6 +45,8 @@ class CardController{
         this._cardTabelaView.update(this._listCards);
         this._limpaCampos();
         this._mostraItens();
+
+        this._mensagemView.update(this._mensagemInfo);
     }
 
     _criaCard(numero, frase, definicao, gramatica, descricaoFonetica){
@@ -83,14 +90,29 @@ class CardController{
 
 
         this._cardTabelaView.update(this._listCards);
+        this._mensagemView.update(this._mensagemWarning);
         $("#modal-edit").modal('toggle');
     }
     removeCardTabela(){
         this._listCards.removeUltimo();
-        if(this._listCards.tamanho<1){
+        if(this.listaEstaVazia()){
             this._escondeItens();
         }
         this._cardTabelaView.update(this._listCards);
         this._inputNumero.textContent = (this._listCards.tamanho+1);
+
+        this._mensagemView.update(this._mensagemDanger);
+    }
+    listaEstaVazia(){
+        return this._listCards.tamanho < 1;
+    }
+    focusRapido(){
+        if(this._inputFrase.value == ""){
+            this._inputFrase.focus();
+        }else if(this._inputDescricaoFonetica.value == ""){
+            this._inputDescricaoFonetica.focus();
+        }else if(this._inputDefinicao.value == ""){
+            this._inputDefinicao.focus();
+        }
     }
 }

@@ -30,6 +30,7 @@
             <h1>Fast anki</h1> 
             <p>Adicionar frases no anki ficou mais fácil</p>
         </header>
+        <div class = "mensagem-view"></div>
         <section class="section-lista">
             <div class = "row">
                     <span class = "col-md-1 numero">1</span>
@@ -86,18 +87,18 @@
     <!-- model -->
     <script src="js/app/models/Card.js"></script>
     <script src="js/app/models/ListCards.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
 
     <!-- views -->
     <script src="js/app/views/View.js"></script>
     <script src="js/app/views/CardTabelaView.js"></script>
     <script src="js/app/views/CardModalEditView.js"></script>
-
+    <script src="js/app/views/MensagemView.js"></script>
 
     <script> 
         let cardController = new CardController;
-        // document.addEventListener("click", (event) => {
-        //     console.log();
-        // })
     </script>
+    <!-- shortcuts -->
+    <script src="js/app/shortcuts.js"></script>
 
 </body>
