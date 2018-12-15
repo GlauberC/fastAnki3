@@ -17,8 +17,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/section-lista.css">
-    <link rel="stylesheet" type="text/css" href="css/section-tabela.css">
     <link rel="stylesheet" type="text/css" href="css/buttons-color.css">
     <link rel="stylesheet" type="text/css" href="css/page.css">
 
@@ -55,8 +53,11 @@
                         </div>
                     </div> 
                 </div>
-            <button onClick = "cardController.recuperaDadosCardAdicionado()" class = "btn btn-button btn-tabela button-custom-color button-color-three float-right btn-copiar invisivel">Copiar ultimas informações</button>
-            <button onClick = "cardController.adicionaCardTabela()" class = "btn btn-button btn-block btn-tabela button-custom-color button-color-three">Adicionar na Tabela</button>
+            
+            <button onClick = "cardController.saveEdit()" class = "btn btn-button btn-tabela button-custom-color button-color-three float-right btn-save-edit invisivel">Save Edit</button>
+            <button onClick = "cardController.closeEdit()" class = "btn btn-button btn-tabela button-custom-color button-color-one float-right  btn-close-edit invisivel">Close Edit</button>
+            <button onClick = "cardController.recuperaDadosCardAdicionado()" class = "btn btn-button btn-tabela button-custom-color button-color-four float-right btn-copiar invisivel">Copiar ultimas informações</button>
+            <button onClick = "cardController.adicionaCardTabela()" class = "btn btn-button btn-block btn-adicionar button-custom-color button-color-three">Adicionar na Tabela</button>
             <button onClick = "cardController.salvaArquivo()" class = "btn btn-button btn-block btn-arquivo button-custom-color button-color-five invisivel">Salvar Tabela como csv</button>
         </section>
         <section class="tabela">
@@ -69,14 +70,6 @@
         
 
     </main>
-
-    <div class="modal" id="modal-edit">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content"> 
-                        
-            </div>
-        </div>
-    </div>
     
     <!-- controller -->
     <script src="js/app/controllers/CardController.js"></script>
@@ -92,7 +85,6 @@
     <!-- views -->
     <script src="js/app/views/View.js"></script>
     <script src="js/app/views/CardTabelaView.js"></script>
-    <script src="js/app/views/CardModalEditView.js"></script>
     <script src="js/app/views/MensagemView.js"></script>
 
     <script> 

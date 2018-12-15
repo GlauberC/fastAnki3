@@ -17,10 +17,14 @@
     background-color: #412227;
 }
 .btn{
-    margin-top: 0.5em;
-    margin-bottom: 0.5em; 
+    margin: 1em;
 }
-.btn-copiar{
-    margin-top: 2em;
-    margin-bottom: 2em; 
+.invisivel{
+    display: none;
+}
+.ul-lista{
+    list-style-type: none;
+}
+.li-lista{
+    margin-bottom: 1em;
 }

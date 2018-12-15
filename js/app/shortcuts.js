@@ -4,10 +4,14 @@ document.addEventListener("keydown",function(event){
     let teclaApertada = event.keyCode;
     if(teclaCtrl && teclaApertada == 32 && !cardController.listaEstaVazia()){
         cardController.recuperaDadosCardAdicionado();
-    }else if(teclaCtrl && teclaApertada == 13){
+    }else if(teclaCtrl && teclaApertada == 13 && !cardController.editMode){
         cardController.adicionaCardTabela();
-    }else if(teclaCtrl && teclaApertada == 8 && !cardController.listaEstaVazia()){
+    }else if(teclaCtrl && teclaApertada == 13 && cardController.editMode){
+        cardController.saveEdit();
+    }else if(teclaCtrl && teclaApertada == 8 && !cardController.listaEstaVazia() && !cardController.editMode){
         cardController.removeCardTabela();
+    }else if(teclaCtrl && teclaApertada == 8 && !cardController.listaEstaVazia() && cardController.editMode){
+        cardController.closeEdit();
     }else if(teclaCtrl && teclaShift){
         cardController.focusRapido();
     }
